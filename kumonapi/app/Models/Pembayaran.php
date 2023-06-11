@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Pembayaran extends Model
 {
     use HasFactory;
-    protected $fillable=['idsiswa','idspp','statusspp','tanggalbayar','bulan','tahun'];
+    protected $fillable=['idsiswa','statusspp','tanggalbayar','bulan','tahun'];
 }

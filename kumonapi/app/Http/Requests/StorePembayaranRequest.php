@@ -22,8 +22,7 @@ class StorePembayaranRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'idsiswa'=>['required'],
-            'idspp'=>['required'],
+            'idsiswa'=>['required'],            
             'statusspp'=>['required'],
             'tanggalbayar'=>['required'],
             'bulan'=>['required'],

@@ -25,6 +25,7 @@ class StoreSiswaRequest extends FormRequest
             'name'=> ['required'],
             'telpon'=> ['required'],
             'status'=> ['required'],
+            'idspp'=>['required'],
         ];
     }
 }
