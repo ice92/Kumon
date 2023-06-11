@@ -3,18 +3,17 @@
     import { onMounted } from "vue";
     import useSiswas from "../../composables/siswas";
     import useSpp from "../../composables/spp";
-  
 
-    var today = new Date();
-    var month=today.getMonth();
-    var year=today.getFullYear();
-    let day = today.getDate();
+    var today   = new Date();
+    var month   = today.getMonth();
+    var year    = today.getFullYear();
+    let day     = today.getDate();
     let currentDate = `${day}-${month}-${year}`;
     const {pembayarans,getPembayarans,destroyPembayaran,cetakPembayaran} = usePembayarans();
-
+    const monthname = ["Januari", "Februari", "Maret","April","Mei", "Juni", "Juli","Agustus","September", "Oktober", "November","Desember"];
     onMounted(() => getPembayarans());
 
-    const {siswas,getSiswas} = useSiswas();
+    const {siswas,getSiswas,getSiswa} = useSiswas();
 
     onMounted(() => getSiswas());
 
@@ -22,7 +21,6 @@
 
     onMounted(() => getSpps());
     var selected=today.getMonth()+1;
-    
 </script>
 <template>
     <div class="mt-20">
@@ -59,18 +57,21 @@
                             Tanggal Bayar
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            Bulan
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- v-if="pembayaran.bulan===selected" -->
                     <tr v-for="pembayaran in pembayarans" :key="pembayaran.id" class="bg-white border-b dark:bg-gray-100 dark:border-gray-700">
-                        <td class="px-6 py-4">{{ siswas[pembayaran.idsiswa-1].name }}</td>
-                        <td class="px-6 py-4">{{ spps[pembayaran.idspp-1].Subject }}</td>
-                        <td class="px-6 py-4">Rp. {{ spps[pembayaran.idspp-1].Harga }},-</td>
+                        <td class="px-6 py-4">{{ siswas[siswas.findIndex((siswa) => siswa.id==pembayaran.idsiswa)].name }}</td>
+                        <td class="px-6 py-4">{{ spps[spps.findIndex((spp) => spp.id==pembayaran.idspp)].Subject }}</td>
+                        <td class="px-6 py-4">Rp. {{ spps[spps.findIndex((spp) => spp.id==pembayaran.idspp)].Harga }},-</td>
                         <td class="px-6 py-4">{{ pembayaran.statusspp }}</td>
                         <td class="px-6 py-4">{{ pembayaran.tanggalbayar }}</td>
+                        <td class="px-6 py-4">{{ monthname[pembayaran.bulan-1] }}</td>
                         <td class="px-6 py-4">
                             <RouterLink :to="{ name:'PembayaranEdit', params: {id:pembayaran.id}}"
                             class="px-4 py-2 bg-teal-400 hover:bg-teal-800 text-white rounded">Bayar
