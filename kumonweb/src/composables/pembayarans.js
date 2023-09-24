@@ -52,16 +52,17 @@ export default function usePembayarans()
         await getPembayarans();
     }
     
-    const cetakPembayaran = async (nama,harga,subject,tanggal) => { 
-        var url="https://api.countapi.xyz/hit/kumonpejanggik/"+tanggal
-        const response = await axios.get(url);       
+    const cetakPembayaran = async (nama,harga,subject,tanggal,ids,bulan) => { 
+        // var url="https://api.countapi.xyz/hit/kumonpejanggik/"+tanggal
+        // const response = await axios.get(url);      
+        var month = ["Januari", "Februari", "Maret","April","Mei", "Juni", "Juli","Agustus","September", "Oktober", "November","Desember"]; 
         var template = `
             <style>
             #invoice-POS{
-                box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5);
+                border: 1px solid black;             
                 padding:2mm;
                 margin: 0 auto;
-                width: 88mm;
+                width: 58mm;
                 background: #FFF;
             h1{
                 font-size: 1.5em;
@@ -84,7 +85,7 @@ export default function usePembayarans()
 
             #top{min-height: 100px;}
             #mid{min-height: 80px;} 
-            #bot{ min-height: 50px;}
+            #bot{min-height: 50px;}
             
             .info{
                 display: block;
@@ -117,30 +118,27 @@ export default function usePembayarans()
             </style>        
             <div id="invoice-POS">               
             <center id="top">
-                <img src="https://www.kumon.com/assets/images/kumon_logo.png" width="200" height="60"> 
+                <img src="https://www.kumon.com/assets/images/kumon_logo.png" width="198" height="44"> 
                 <div class="info"> 
-                    <h2>Kumon Pejanggik</h2>
-                    <p>Kursus Matematika & Bahasa Inggris<p>
+                    <p> <strong>KUMON PEJANGGIK</strong></br>
+                    Jl. Pejanggik No.12D, Mataram</br>
+                    Telp: 0877-6555-6698 <p>
                 </div><!--End Info-->
             </center><!--End InvoiceTop-->
-            
-            <div id="mid">
+    
+            <div id="mid">         
                 <div class="info">
-                <h3>Kontak :</h3>
-                <p> 
-                    Address : Jln. Pejanggik No. 12 D, Mataram</br>
-                    Phone   : 0877-6556-6698</br>
+                <p>
+                    Tgl.`+tanggal+`</br>
+                    No.`+tanggal.replace('-', '').replace('-', '')+month.indexOf(bulan)+'00'+ids+`                    
                 </p>
-                </div>
-            </div><!--End Invoice Mid-->
-            <div id="mid">
-                <div class="info">
-                <h3>Detail Pembayaran :</h3>
-                <p> 
-                    Nama    : `+nama+`</br>
-                    Subject : `+subject+`</br>
+                
+                <p>
+                <center><strong>KWITANSI PEMBAYARAN</strong></center> </br>
+                    Nama Siswa    :</br>`+nama+`</br>
+                    Uang Kursus Bulan: `+bulan+`</br>
+                    Subyek : `+subject+`</br>
                     Nominal : `+'Rp. '+harga+',-'+`</br>
-                    Tanggal : `+tanggal+`</br>
                 </p>
                 </div>
             </div><!--End Invoice Mid-->
@@ -148,8 +146,7 @@ export default function usePembayarans()
             <div id="bot">
 
                 <div id="legalcopy">
-                    <p class="legal"><strong>Thank you for your business!</strong></p>
-                    <small>kwitansi no:`+tanggal+'-'+response.data["value"]+`</small>
+                    <small>Bayar:Tunai/Transfer/Debet/QRIS</small>
                 </div>
 
                 </div><!--End InvoiceBot-->

@@ -4,15 +4,15 @@ import { useRouter } from "vue-router";
 import router from "../router";
 
 // axios.defaults.baseURL = "http://192.168.8.104:8000/api/v1/"
-axios.defaults.baseURL = "http://192.168.1.24:8000/api/v1/"
-// axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1/"
+// axios.defaults.baseURL = "http://192.168.1.24:8000/api/v1/"
+axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1/"
 // axios.defaults.baseURL = "http://192.168.8.139:8000/api/v1/"
 export default function useSiswas()
 {
     const siswas = ref([]);
     const siswa = ref([]);
     const errors = ref([]);
-    const reuter = useRouter();
+    const router = useRouter();
     
     const getSiswas = async () => {
         const response = await axios.get("siswa");
@@ -29,8 +29,9 @@ export default function useSiswas()
             await axios.post("siswa",data);
             await router.push({name:"SiswaIndex"});
         } catch (error) {
-            if(error.response.status===422){
+            if(error){
                 errors.value = error.response.data.errors;
+                console.error(error.response.data);
             }
         }
     };
@@ -40,8 +41,9 @@ export default function useSiswas()
             await axios.put("siswa/"+id, siswa.value);
             await router.push({name:"SiswaIndex"});
         } catch (error) {
-            if(error.response.status===422){
+            if(error){
                 errors.value = error.response.data.errors;
+                console.error(error.response.data);
             }
         }
     };

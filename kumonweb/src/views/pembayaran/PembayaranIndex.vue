@@ -51,13 +51,13 @@
                             Nominal
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            Periode
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             Status
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Tanggal Bayar
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Bulan
                         </th>
                         <th scope="col" class="px-6 py-3">
                             
@@ -67,17 +67,17 @@
                 <tbody>
                     <tr v-for="pembayaran in pembayarans" :key="pembayaran.id" class="bg-white border-b dark:bg-gray-100 dark:border-gray-700">
                         <td class="px-6 py-4">{{ siswas[siswas.findIndex((siswa) => siswa.id==pembayaran.idsiswa)].name }}</td>
-                        <td class="px-6 py-4">{{ spps[spps.findIndex((spp) => spp.id==pembayaran.idspp)].Subject }}</td>
-                        <td class="px-6 py-4">Rp. {{ spps[spps.findIndex((spp) => spp.id==pembayaran.idspp)].Harga }},-</td>
+                        <td class="px-6 py-4">{{ spps[spps.findIndex((spp)=>spp.id==siswas[siswas.findIndex((siswa) => siswa.id==pembayaran.idsiswa)].idspp)].Subject }}</td>
+                        <td class="px-6 py-4">Rp. {{ spps[spps.findIndex((spp)=>spp.id==siswas[siswas.findIndex((siswa) => siswa.id==pembayaran.idsiswa)].idspp)].Harga }},-</td>
+                        <td class="px-6 py-4">{{ monthname[pembayaran.bulan-1]+ " "+ pembayaran.tahun}}</td>
                         <td class="px-6 py-4">{{ pembayaran.statusspp }}</td>
-                        <td class="px-6 py-4">{{ pembayaran.tanggalbayar }}</td>
-                        <td class="px-6 py-4">{{ monthname[pembayaran.bulan-1] }}</td>
+                        <td class="px-6 py-4">{{ pembayaran.tanggalbayar }}</td>                        
                         <td class="px-6 py-4">
                             <RouterLink :to="{ name:'PembayaranEdit', params: {id:pembayaran.id}}"
                             class="px-4 py-2 bg-teal-400 hover:bg-teal-800 text-white rounded">Bayar
                             </RouterLink>
                             <button @click="destroyPembayaran(pembayaran.id)" class="px-4 py-2 ml-2 bg-red-400 hover:bg-red-800 text-white rounded">Hapus</button>
-                            <button v-if="pembayaran.statusspp==='Lunas'" @click="cetakPembayaran(siswas[pembayaran.idsiswa-1].name,spps[pembayaran.idspp-1].Harga,spps[pembayaran.idspp-1].Subject,currentDate)" class="px-4 py-2 ml-2 bg-blue-400 hover:bg-blue-800 text-white rounded">Cetak</button>
+                            <button v-if="pembayaran.statusspp==='Lunas'" @click="cetakPembayaran(siswas[siswas.findIndex((siswa) => siswa.id==pembayaran.idsiswa)].name,spps[spps.findIndex((spp)=>spp.id==siswas[siswas.findIndex((siswa) => siswa.id==pembayaran.idsiswa)].idspp)].Harga,spps[spps.findIndex((spp)=>spp.id==siswas[siswas.findIndex((siswa) => siswa.id==pembayaran.idsiswa)].idspp)].Subject,currentDate,pembayaran.idsiswa,monthname[pembayaran.bulan-1])" class="px-4 py-2 ml-2 bg-blue-400 hover:bg-blue-800 text-white rounded">Cetak</button>
                         </td>
                     </tr>                    
                 </tbody>
@@ -109,3 +109,4 @@ export default {
   }
 }
 </script>
+

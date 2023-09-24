@@ -16,8 +16,7 @@ class PembayaranResource extends JsonResource
     {
         return [
             'id'            => $this->id,
-            'idsiswa'       => $this->idsiswa,
-            
+            'idsiswa'       => $this->idsiswa,            
             'statusspp'     => $this->statusspp,
             'tanggalbayar'  => $this->tanggalbayar,
             'bulan'         => $this->bulan,

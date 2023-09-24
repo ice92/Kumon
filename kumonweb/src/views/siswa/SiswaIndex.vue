@@ -1,10 +1,12 @@
 <script setup>
     import useSiswas from "../../composables/siswas";
+    import useSpp from "../../composables/spp";
     import { onMounted } from "vue";
 
     const {siswas,getSiswas,destroySiswa} = useSiswas();
-
+    const {spps,getSpps} = useSpp();
     onMounted(() => getSiswas());
+    onMounted(() => getSpps());
 </script>
 <template>
     <div class="mt-20">
@@ -17,6 +19,9 @@
                     <tr>
                         <th scope="col" class="px-6 py-3">
                             Nama
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Subject
                         </th>
                         <th scope="col" class="px-6 py-3">
                             No.Telepon
@@ -32,6 +37,7 @@
                 <tbody>
                     <tr v-for="siswa in siswas" :key="siswa.id" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <td class="px-6 py-4">{{ siswa.name }}</td>
+                        <td class="px-6 py-4">{{ spps[spps.findIndex((x) => x.id==siswa.idspp)].Subject }}</td>
                         <td class="px-6 py-4">{{ siswa.telpon }}</td>
                         <td class="px-6 py-4">{{ siswa.status }}</td>
                         <td class="px-6 py-4">

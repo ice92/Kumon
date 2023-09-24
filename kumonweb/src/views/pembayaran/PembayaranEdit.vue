@@ -23,12 +23,7 @@ onMounted(()=>getPembayaran(props.id));
                 <label for="idsiswa" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ID Siswa</label>
                 <input disabled type="text" id="idsiswa" v-model="pembayaran.idsiswa" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <div v-if="errors.idsiswa"><span class="text-sm text-red-400">{{errors.idsiswa[0]}}</span></div>
-            </div>
-            <div class="mb-6">
-                <label for="idspp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ID SPP</label>
-                <input disabled type="text" id="idspp" v-model="pembayaran.idspp" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <div v-if="errors.idspp"><span class="text-sm text-red-400">{{errors.idspp[0]}}</span></div>
-            </div>
+            </div>            
             <div class="mb-6">
                 <label for="statusspp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
                 <select type="text" id="statusspp" v-model="pembayaran.statusspp" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">

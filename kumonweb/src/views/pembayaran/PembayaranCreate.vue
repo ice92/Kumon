@@ -30,7 +30,6 @@ var year=today.getFullYear();
 
 const form = reactive ({
     idsiswa: "",
-    idspp: "",
     statusspp: "",
     tanggalbayar: "",
     bulan: "",
@@ -57,14 +56,14 @@ onMounted(() => getSpps());
                 </select>
                 <div v-if="errors.idsiswa"><span class="text-sm text-red-400">{{errors.idsiswa[0]}}</span></div>
             </div>
-            <div class="mb-6">
+            <!-- <div class="mb-6">
                 <label for="idspp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ID SPP</label>
-                <!-- <input type="text" id="idspp" v-model="form.idspp" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"> -->
+                <input type="text" id="idspp" v-model="form.idspp" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <select type="text" id="idspp" v-model="form.idspp" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option v-for="spp in spps" :value="spp.id">{{spp.Subject}}-{{spp.Jenjang}}</option>
                 </select>
                 <div v-if="errors.idspp"><span class="text-sm text-red-400">{{errors.idspp[0]}}</span></div>
-            </div>
+            </div> -->
             <div class="mb-6">
                 <label for="statusspp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
                 <!-- <input type="text" id="statusspp" v-model="form.statusspp" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"> -->

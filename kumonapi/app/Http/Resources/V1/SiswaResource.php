@@ -19,7 +19,7 @@ class SiswaResource extends JsonResource
             'name'      => $this->name,
             'telpon'    => $this->telpon,
             'status'    => $this->status,
-            'idspp'         => $this->idspp,
+            'idspp'     => $this->idspp
         ];
     }
 }

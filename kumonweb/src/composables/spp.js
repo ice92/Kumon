@@ -4,15 +4,15 @@ import { useRouter } from "vue-router";
 import router from "../router";
 
 // axios.defaults.baseURL = "http://192.168.8.104:8000/api/v1/"
-// axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1/"
-axios.defaults.baseURL = "http://192.168.1.24:8000/api/v1/"
+axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1/"
+// axios.defaults.baseURL = "http://192.168.1.24:8000/api/v1/"
 // axios.defaults.baseURL = "http://192.168.8.139:8000/api/v1/"
 export default function useSpp()
 {
     const spps = ref([]);
     const spp = ref([]);
     const errors = ref([]);
-    const reuter = useRouter();
+    const router = useRouter();
 
     const getSpps = async () => {
         const response = await axios.get("spp");
@@ -25,6 +25,7 @@ export default function useSpp()
     }
 
     const storeSpp = async (data) => { 
+        try{
             await axios.post("spp",data);
             await router.push({name:"SppIndex"});
         } catch (error) {
