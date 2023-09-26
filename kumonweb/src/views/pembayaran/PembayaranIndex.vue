@@ -5,7 +5,7 @@
     import useSpp from "../../composables/spp";
 
     var today   = new Date();
-    var month   = today.getMonth();
+    var month   = today.getMonth()+1;
     var year    = today.getFullYear();
     let day     = today.getDate();
     let currentDate = `${day}-${month}-${year}`;

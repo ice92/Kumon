@@ -2,7 +2,7 @@ import { ref } from "vue";
 import axios from "axios";
 import { useRouter } from "vue-router";
 import router from "../router";
-axios.defaults.baseURL = "http://192.168.1.24:8000/api/v1/"
+axios.defaults.baseURL = "http://192.168.1.24:8000/api/v1/"//real kumon
 // axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1/"
 // axios.defaults.baseURL = "http://192.168.8.139:8000/api/v1/"
 export default function usePembayarans()
@@ -10,16 +10,26 @@ export default function usePembayarans()
     const pembayarans = ref([]);
     const pembayaran = ref([]);
     const errors = ref([]);
-    const reuter = useRouter();
+    const router = useRouter();
 
     const getPembayarans = async () => {
-        const response = await axios.get("pembayaran");
-        pembayarans.value = response.data.data;
+        try{
+            const response = await axios.get("pembayaran");
+            pembayarans.value = response.data.data;
+        } catch(error){
+            pembayarans.value =null;
+        }
+        
     };
 
     const getPembayaran = async (id) => {
-        const response = await axios.get("pembayaran/" + id);
-        pembayaran.value = response.data.data;
+        try{
+            const response = await axios.get("pembayaran/" + id);
+            pembayaran.value = response.data.data;
+        }catch(error){
+            pembayaran.value =null;
+        }
+        
     }
 
     const storePembayaran = async (data) => {
@@ -130,7 +140,7 @@ export default function usePembayarans()
                 <div class="info">
                 <p>
                     Tgl.`+tanggal+`</br>
-                    No.`+tanggal.replace('-', '').replace('-', '')+month.indexOf(bulan)+'00'+ids+`                    
+                    No.`+tanggal.replace('-', '').replace('-', '')+(month.indexOf(bulan)+1)+'00'+ids+`                    
                 </p>
                 
                 <p>

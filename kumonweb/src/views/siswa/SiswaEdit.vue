@@ -41,6 +41,7 @@ onMounted(()=>getSpps());
                 <select type="text" id="status" v-model="siswa.status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option value="Aktif">Aktif</option>
                     <option value="Absent">Absent</option>
+                    <option value="Hapus">Hapus</option>
                 </select>
                 <div v-if="errors.status"><span class="text-sm text-red-400">{{errors.status[0]}}</span></div>
             </div>

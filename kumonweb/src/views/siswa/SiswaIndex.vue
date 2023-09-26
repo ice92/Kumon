@@ -35,16 +35,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="siswa in siswas" :key="siswa.id" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <td class="px-6 py-4">{{ siswa.name }}</td>
-                        <td class="px-6 py-4">{{ spps[spps.findIndex((x) => x.id==siswa.idspp)].Subject }}</td>
-                        <td class="px-6 py-4">{{ siswa.telpon }}</td>
-                        <td class="px-6 py-4">{{ siswa.status }}</td>
-                        <td class="px-6 py-4">
+                    <tr  v-for="siswa in siswas" :key="siswa.id" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td v-if="siswa.status!=='Hapus'" class="px-6 py-4">{{ siswa.name }}</td>
+                        <td v-if="siswa.status!=='Hapus'" class="px-6 py-4">{{ spps[spps.findIndex((x) => x.id==siswa.idspp)].Subject }}</td>
+                        <td v-if="siswa.status!=='Hapus'" class="px-6 py-4">{{ siswa.telpon }}</td>
+                        <td v-if="siswa.status!=='Hapus'" class="px-6 py-4">{{ siswa.status }}</td>
+                        <td v-if="siswa.status!=='Hapus'" class="px-6 py-4">
                             <RouterLink :to="{ name:'SiswaEdit', params: {id:siswa.id}}"
-                            class="px-4 py-2 bg-teal-400 hover:bg-teal-800 text-white rounded">Ubah
+                            class="px-4 py-2 bg-teal-400 hover:bg-teal-800 text-white rounded">Ubah/Hapus
                             </RouterLink>
-                            <button @click="destroySiswa(siswa.id)" class="px-4 py-2 ml-2 bg-red-400 hover:bg-red-800 text-white rounded">Hapus</button>
+                            <!-- <button @click="destroySiswa(siswa.id)" class="px-4 py-2 ml-2 bg-red-400 hover:bg-red-800 text-white rounded">Hapus</button> -->
                         </td>
                     </tr>                    
                 </tbody>

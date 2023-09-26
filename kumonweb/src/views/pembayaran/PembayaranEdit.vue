@@ -19,7 +19,7 @@ onMounted(()=>getPembayaran(props.id));
 <div class="mt-20">
     <form class="max-w-md mx-auto p-4 bg-gray-500 shadown-md rounded-md text-black" @submit.prevent="updatePembayaran($route.params.id)">
         <div class="space-y-6">
-            <div class="mb-6">
+            <div v-show="false" class="mb-6">
                 <label for="idsiswa" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ID Siswa</label>
                 <input disabled type="text" id="idsiswa" v-model="pembayaran.idsiswa" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <div v-if="errors.idsiswa"><span class="text-sm text-red-400">{{errors.idsiswa[0]}}</span></div>
@@ -34,28 +34,13 @@ onMounted(()=>getPembayaran(props.id));
             </div>
             <div class="mb-6">
                 <label for="tanggalbayar" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal</label>
-                <input type="text" id="tanggalbayar" v-model="pembayaran.tanggalbayar" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <input placeholder="YYYY-MM-DD" type="date" id="tanggalbayar" v-model="pembayaran.tanggalbayar" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <div v-if="errors.tanggalbayar"><span class="text-sm text-red-400">{{errors.tanggalbayar[0]}}</span></div>
             </div>
 
             <div class="mb-6">
-                <label for="bulan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bulan</label>
-                <input disabled type="text" id="bulan" v-model="pembayaran.bulan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <!-- <select id="bulan" v-model="pembayaran.bulan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value="1">Januari</option>
-                    <option value="2">Februari</option>
-                    <option value="3">Maret</option>
-                    <option value="4">April</option>
-                    <option value="5">Mei</option>
-                    <option value="6">Juni</option>
-                    <option value="7">Juli</option>
-                    <option value="8">Agustus</option>
-                    <option value="9">September</option>
-                    <option value="10">Oktober</option>
-                    <option value="11">November</option>
-                    <option value="12">Desember</option>
-                </select> -->
-                <!-- <div v-if="errors.bulan"><span class="text-sm text-red-400">{{errors.bulan[0]}}</span></div> -->
+                <label for="bulan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pembayaran Bulan {{ monthname[pembayaran.bulan-1] }} {{ pembayaran.tahun }}</label>
+                <input v-show="false" disabled type="text" id="bulan" v-model="pembayaran.bulan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             </div>
             <!-- <div class="mb-6">
                 <label for="tahun" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tahun</label> -->

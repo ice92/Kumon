@@ -21,12 +21,20 @@ const form = reactive ({
             </div>
             <div class="mb-6">
                 <label for="Jenjang" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenjang</label>
-                <input type="text" id="Jenjang" v-model="form.Jenjang" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <!-- <input type="text" id="Jenjang" v-model="form.Jenjang" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"> -->
+                <select type="text" id="Jenjang" v-model="form.Jenjang" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value="Play Group">Play Group</option>
+                    <option value="Taman Kanak-Kanak">Taman Kanak-Kanak</option>
+                    <option value="Sekolah Dasar">Sekolah Dasar</option>
+                    <option value="Sekolah Menengah Pertama">Sekolah Menengah Pertama</option>
+                    <option value="Sekolah Menengah Atas">Sekolah Menengah Atas</option>
+                    <option value="Lainnya">Lainnya</option>
+                </select>
                 <div v-if="errors.Jenjang"><span class="text-sm text-red-400">{{errors.Jenjang[0]}}</span></div>
             </div>
             <div class="mb-6">
                 <label for="Harga" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">SPP</label>
-                <input type="text" id="Harga" v-model="form.Harga" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <input type="number" id="Harga" v-model="form.Harga" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <div v-if="errors.Harga"><span class="text-sm text-red-400">{{errors.Harga[0]}}</span></div>
             </div>
             <div class="mt-4">
