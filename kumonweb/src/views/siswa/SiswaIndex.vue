@@ -37,7 +37,8 @@
                 <tbody>
                     <tr  v-for="siswa in siswas" :key="siswa.id" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <td v-if="siswa.status!=='Hapus'" class="px-6 py-4">{{ siswa.name }}</td>
-                        <td v-if="siswa.status!=='Hapus'" class="px-6 py-4">{{ spps[spps.findIndex((x) => x.id==siswa.idspp)].Subject }}</td>
+                        <td v-if="siswa.status!=='Hapus' && spps[spps.findIndex((x) => x.id==siswa.idspp)]" class="px-6 py-4">{{ spps[spps.findIndex((x) => x.id==siswa.idspp)].Subject  }} {{ spps[spps.findIndex((x) => x.id==siswa.idspp)].Jenjang  }} </td>
+                        <td v-else class="px-6 py-4">Subject Tidak Ditemukan/Telah dihapus</td>
                         <td v-if="siswa.status!=='Hapus'" class="px-6 py-4">{{ siswa.telpon }}</td>
                         <td v-if="siswa.status!=='Hapus'" class="px-6 py-4">{{ siswa.status }}</td>
                         <td v-if="siswa.status!=='Hapus'" class="px-6 py-4">

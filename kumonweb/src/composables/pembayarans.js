@@ -2,8 +2,8 @@ import { ref } from "vue";
 import axios from "axios";
 import { useRouter } from "vue-router";
 import router from "../router";
-axios.defaults.baseURL = "http://192.168.1.24:8000/api/v1/"//real kumon
-// axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1/"
+// axios.defaults.baseURL = "http://192.168.1.24:8000/api/v1/"//real kumon
+axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1/"
 // axios.defaults.baseURL = "http://192.168.8.139:8000/api/v1/"
 export default function usePembayarans()
 {
@@ -15,7 +15,7 @@ export default function usePembayarans()
     const getPembayarans = async () => {
         try{
             const response = await axios.get("pembayaran");
-            pembayarans.value = response.data.data;
+            pembayarans.value = response.data.data.reverse();
         } catch(error){
             pembayarans.value =null;
         }
@@ -68,9 +68,7 @@ export default function usePembayarans()
         var month = ["Januari", "Februari", "Maret","April","Mei", "Juni", "Juli","Agustus","September", "Oktober", "November","Desember"]; 
         var template = `
             <style>
-            #invoice-POS{
-                border: 1px solid black;             
-                padding:2mm;
+            #invoice-POS{                          
                 margin: 0 auto;
                 width: 58mm;
                 background: #FFF;
@@ -132,7 +130,7 @@ export default function usePembayarans()
                 <div class="info"> 
                     <p> <strong>KUMON PEJANGGIK</strong></br>
                     Jl. Pejanggik No.12D, Mataram</br>
-                    Telp: 0877-6555-6698 <p>
+                    Telp: 0877-6556-6698 <p>
                 </div><!--End Info-->
             </center><!--End InvoiceTop-->
     
